@@ -1,172 +1,199 @@
-import github from "/social/github.png";
-import google from "/social/google.png";
-import facebook from "/social/facebook.png";
-import { FaRegEye } from "react-icons/fa";
-import { FaEyeSlash } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
-import { IoHomeOutline } from "react-icons/io5";
+import { FaRegEye, FaEyeSlash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
+import React from "react";
+import Container from "../../components/Container";
+import { FcGoogle } from "react-icons/fc";
 
-const SignUp = () => {
-  const [viewPassword, setViewPassword] = useState(false);
-  const [passwordError, setPasswordError] = useState("");
-  const [anyError, setAnyError] = useState("");
+// Define the form inputs interface for TypeScript
+interface SignUpFormInputs {
+  name: string;
+  email: string;
+  password: string;
+  photo: FileList; // FileList is used because photo will be a file upload
+}
 
+const SignUp: React.FC = () => {
+  // Using TypeScript types for state
+  const [viewPassword, setViewPassword] = useState<boolean>(false);
+  const [passwordError, setPasswordError] = useState<string>("");
+  const [anyError, setAnyError] = useState<string | null>(null);
+
+  // Register form fields using React Hook Form with TypeScript typing
   const {
     register,
     handleSubmit,
     formState: { errors },
-    // reset,
-  } = useForm();
+  } = useForm<SignUpFormInputs>();
 
-  const onSubmit = async (data: any) => {};
+  // Handling form submission with type-safe data
+  const onSubmit: SubmitHandler<SignUpFormInputs> = async (data) => {
+    try {
+      setAnyError(null); // Clear previous errors
+      console.log("Form Submitted", data); // Perform form submission logic here (e.g., API call)
+    } catch (error) {
+      setAnyError("An error occurred. Please try again."); // Handle error
+    }
+  };
+
+  // Toggle password visibility
+  const togglePasswordView = () => {
+    setViewPassword(!viewPassword);
+  };
 
   return (
-    <div className='bg-[#F2F3F3] bg-cover flex items-center justify-center min-h-screen'>
-      <div className='relative min-h-[calc(100vh-100px)] max-w-xl px-20 py-5 mx-auto bg-white border rounded-lg shadow'>
-        <Link to='/' className='absolute left-1 top-1 border rounded-full p-2'>
-          <IoHomeOutline className='text-2xl text-purple-600' />
-        </Link>
-
-        <div className='flex flex-col items-center justify-center mb-2'>
-          <img
-            className='size-12 mb-2'
-            src='https://i.ibb.co/MB4svxG/code.png'
-            alt=''
-          />
-          <h2 className='text-2xl font-bold text-gray-800'>
-            Create a new account
-          </h2>
-          <p className='text-gray-600 font-medium'>
-            Please enter your detail to sign up.
-          </p>
-        </div>
-
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className='mb-2'>
-            <label
-              htmlFor='name'
-              className='block mb-1 text-base font-semibold text-gray-900'
-            >
-              Your Name
-            </label>
-            <input
-              type='text'
-              id='name'
-              {...register("name", { required: true })}
-              className='shadow-sm bg-gray-50 outline-none border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5'
-              placeholder='Enter name'
-            />
-            {errors.name && (
-              <span className='text-red-600 font-medium'>
-                Your name is required
-              </span>
-            )}
+    <div className="w-screen h-screen py-5 bg-gray-200">
+      <Container className="flex *:flex-1 h-full border rounded-xl overflow-hidden shadow">
+        {/* Left Side (Form Area) */}
+        <div className="bg-white flex flex-col items-center justify-center p-4 w-full md:w-1/2">
+          {/* Form Header */}
+          <div className="space-y-2">
+            <h3 className="text-3xl font-bold">Create Your Account</h3>
+            <p className="text-sm text-gray-500 font-medium text-center">
+              Welcome! Please enter your details
+            </p>
           </div>
 
-          <div className='mb-2'>
-            <label
-              htmlFor='email'
-              className='block mb-1 text-base font-semibold text-gray-900'
-            >
-              Your email
-            </label>
-            <input
-              type='email'
-              id='email'
-              {...register("email", { required: true })}
-              className='shadow-sm bg-gray-50 outline-none border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5'
-              placeholder='Enter email'
-            />
-            {errors.email && (
-              <span className='text-red-600 font-medium'>
-                Your email is required
-              </span>
-            )}
-          </div>
-          <div className='relative mb-2'>
-            <label
-              htmlFor='password'
-              className='block mb-1 text-base font-semibold text-gray-900'
-            >
-              Your password
-            </label>
-            <input
-              type={viewPassword ? "text" : "password"}
-              id='password'
-              {...register("password", { required: true })}
-              className='shadow-sm bg-gray-50 outline-none border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5'
-              placeholder='Enter password'
-            />
-            <span
-              onClick={() => setViewPassword(!viewPassword)}
-              className='absolute right-2 top-10'
-            >
-              {viewPassword ? (
-                <FaRegEye className='cursor-pointer' />
-              ) : (
-                <FaEyeSlash className='cursor-pointer' />
-              )}
-            </span>
-            <p className='text-red-600 font-medium my-1'>{passwordError}</p>
-            {errors.password && (
-              <span className='text-red-600 font-medium'>
-                Your password is required
-              </span>
-            )}
-          </div>
-
-          <div className='mb-3'>
-            <label
-              className='block mb-1 text-base font-semibold text-gray-900'
-              htmlFor='file_input'
-            >
-              Upload Your Photo
-            </label>
-            <input
-              className='block w-full text-sm text-gray-900 border border-gray-300 cursor-pointer bg-gray-50 focus:outline-none'
-              id='file_input'
-              {...register("photo", { required: true })}
-              type='file'
-            />
-            {errors.photo && (
-              <span className='text-red-600 font-medium'>
-                Your photo is required
-              </span>
-            )}
-          </div>
-          <p className='text-red-500 font-semibold my-1'>{anyError}</p>
-          <button
-            type='submit'
-            className='w-full text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2'
-          >
-            <span className='w-max mx-auto'>SignIn</span>
+          {/* Google Sign-up Button */}
+          <button className="mt-3 shadow-sm bg-transparent outline-none border border-gray-300 text-gray-500 text-base font-semibold rounded-sm w-full max-w-[350px] p-2 flex items-center gap-2 justify-center">
+            <FcGoogle className="text-lg" /> Sign up with Google
           </button>
-        </form>
 
-        <div className='divider my-1'>
-          <span className='text-xs'>or</span>
-        </div>
-        <div className='flex items-center justify-between gap-2'>
-          <div className='px-2 cursor-pointer shadow-sm flex items-center justify-between border rounded-md'>
-            <img className='size-8 p-1' src={github} alt='github' />
+          {/* Divider */}
+          <div className="flex items-center w-full max-w-[350px] gap-1 text-gray-500 font-medium">
+            <hr className="flex-1 border-b" />
+            OR
+            <hr className="flex-1 border-b" />
           </div>
-          <div className='px-2 cursor-pointer shadow-sm flex items-center justify-between border rounded-md'>
-            <img className='size-8 p-1' src={google} alt='google' />
+
+          {/* Form */}
+          <div className="w-full max-w-[350px]">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+              {/* Name Input */}
+              <div className="mb-2 w-full">
+                <label
+                  htmlFor="name"
+                  className="block mb-1 text-base font-semibold text-gray-900"
+                >
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  {...register("name", { required: "Your name is required" })}
+                  className="shadow-sm bg-transparent outline-none border border-gray-300 text-gray-900 text-sm rounded-sm block w-full p-2.5"
+                  placeholder="Enter name"
+                />
+                {errors.name && (
+                  <span className="text-red-600 font-medium">
+                    {errors.name.message}
+                  </span>
+                )}
+              </div>
+
+              {/* Email Input */}
+              <div className="mb-2">
+                <label
+                  htmlFor="email"
+                  className="block mb-1 text-base font-semibold text-gray-900"
+                >
+                  Your Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  {...register("email", { required: "Your email is required" })}
+                  className="shadow-sm bg-transparent outline-none border border-gray-300 text-gray-900 text-sm rounded-sm block w-full p-2.5"
+                  placeholder="Enter email"
+                />
+                {errors.email && (
+                  <span className="text-red-600 font-medium">
+                    {errors.email.message}
+                  </span>
+                )}
+              </div>
+
+              {/* Password Input */}
+              <div className="relative mb-2">
+                <label
+                  htmlFor="password"
+                  className="block mb-1 text-base font-semibold text-gray-900"
+                >
+                  Your Password
+                </label>
+                <input
+                  type={viewPassword ? "text" : "password"}
+                  id="password"
+                  {...register("password", {
+                    required: "Your password is required",
+                  })}
+                  className="shadow-sm bg-transparent outline-none border border-gray-300 text-gray-900 text-sm rounded-sm block w-full p-2.5"
+                  placeholder="Enter password"
+                />
+                <span
+                  onClick={togglePasswordView}
+                  className="absolute right-2 top-10"
+                >
+                  {viewPassword ? (
+                    <FaRegEye className="cursor-pointer" />
+                  ) : (
+                    <FaEyeSlash className="cursor-pointer" />
+                  )}
+                </span>
+                {errors.password && (
+                  <span className="text-red-600 font-medium">
+                    {errors.password.message}
+                  </span>
+                )}
+                <p className="text-red-600 font-medium my-1">{passwordError}</p>
+              </div>
+
+              {/* File Input */}
+              <div className="mb-3">
+                <label
+                  className="mb-1 text-base font-semibold text-gray-900 w-full p-2 border-2 border-dashed flex justify-center items-center"
+                  htmlFor="file_input"
+                >
+                  Upload Your Photo
+                </label>
+                <input
+                  className="hidden"
+                  id="file_input"
+                  {...register("photo", { required: "Your photo is required" })}
+                  type="file"
+                />
+                {errors.photo && (
+                  <span className="text-red-600 font-medium">
+                    {errors.photo.message}
+                  </span>
+                )}
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="w-full text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-sm text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2"
+              >
+                <span className="w-max mx-auto">Sign Up</span>
+              </button>
+            </form>
+            <p className="text-sm text-gray-500 mt-2 text-center">
+              Already have an account?{" "}
+              <Link to={"/signin"} className="hover:underline font-semibold">
+                Sign in
+              </Link>
+            </p>
           </div>
-          <div className='px-2 cursor-pointer shadow-sm flex items-center justify-between border rounded-md'>
-            <img className='size-8 p-1' src={facebook} alt='facebook' />
-          </div>
+
+          {anyError && (
+            <p className="text-red-500 font-semibold my-1">{anyError}</p>
+          )}
         </div>
 
-        <p className='mt-2'>
-          Already have an account? Please
-          <Link to='/signin' className='ml-2 font-semibold'>
-            Sign In
-          </Link>
-        </p>
-      </div>
+        {/* Right Side (Image/Design) */}
+        <div className="h-full w-full bg-[#111111] hidden md:block"></div>
+      </Container>
     </div>
   );
 };
