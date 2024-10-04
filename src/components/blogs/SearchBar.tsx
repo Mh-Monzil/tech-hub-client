@@ -25,7 +25,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         placeholder={placeholder}
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
-        className="w-full h-full px-4 bg-transparent outline-none"
+        className="flex-grow h-full px-4 bg-transparent outline-none"
       />
       <button
         type="button"

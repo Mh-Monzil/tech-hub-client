@@ -2,9 +2,9 @@ import React from "react";
 
 const CommentsArea: React.FC = () => {
   return (
-    <div className="mt-10">
+    <div className="mt-10 px-3 lg:px-0">
       <h3 className="text-3xl font-bold">Leave a comment</h3>
-      <div className="flex flex-col items-end mt-5  max-w-[calc(100%-456px)]">
+      <div className="flex flex-col items-end mt-5  lg:max-w-[calc(100%-456px)]">
         <textarea
           className="border border-black p-4 rounded-md bg-white w-full h-[200px]"
           placeholder="Your thoughts here..."

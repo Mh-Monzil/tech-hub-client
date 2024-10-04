@@ -19,10 +19,10 @@ const TopBlogCard: React.FC<BlogCardProps> = ({
   return (
     <Link to={link}>
       <div
-        className="w-full h-[550px] bg-cover rounded-2xl overflow-hidden"
+        className="w-full h-[550px] bg-cover rounded-2xl overflow-hidden hover:-translate-y-2 duration-500"
         style={{ backgroundImage: `url(${imageUrl})` }}
       >
-        <div className="w-full h-full bg-black/25 flex flex-col justify-end">
+        <div className="w-full h-full bg-gradient-to-t from-black/50 to-black/5 flex flex-col justify-end">
           <div className="text-white p-5">
             <h3 className="text-3xl mb-4 font-semibold">{title}</h3>
             <div className="flex items-center gap-5">

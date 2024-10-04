@@ -13,7 +13,7 @@ const TopBlogs: React.FC = () => {
           authorName="Azumi Rose"
           date="25 April 2022"
           imageUrl="https://jobbox-nextjs-v3.vercel.app/assets/imgs/page/blog/img-big1.png"
-          link=""
+          link="/blogs/123"
           title="11 Tips to Help You Get New Clients"
         />
         <TopBlogCard
@@ -21,7 +21,7 @@ const TopBlogs: React.FC = () => {
           authorName="Azumi Rose"
           date="25 April 2022"
           imageUrl="https://jobbox-nextjs-v3.vercel.app/assets/imgs/page/blog/img-big1.png"
-          link=""
+          link="/blogs/123"
           title="11 Tips to Help You Get New Clients"
         />
         <TopBlogCard
@@ -29,7 +29,7 @@ const TopBlogs: React.FC = () => {
           authorName="Azumi Rose"
           date="25 April 2022"
           imageUrl="https://jobbox-nextjs-v3.vercel.app/assets/imgs/page/blog/img-big1.png"
-          link=""
+          link="/blogs/123"
           title="11 Tips to Help You Get New Clients"
         />
       </div>
