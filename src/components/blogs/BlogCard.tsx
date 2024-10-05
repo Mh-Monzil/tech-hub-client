@@ -25,7 +25,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
   readingTime,
 }) => {
   return (
-    <div className="w-full border rounded-2xl p-3 hover:-translate-y-2 hover:shadow-md hover:border-gray-300 my-auto duration-500">
+    <div className="w-full border rounded-2xl p-3 hover:-translate-y-2 hover:shadow-sm my-auto duration-500">
       <Link to={link}>
         <img
           src={imageUrl}

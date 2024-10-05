@@ -8,14 +8,14 @@ import CommentsArea from "../../components/blog/CommentsArea";
 const Blog: React.FC = () => {
   return (
     <Container>
-      <div className="flex gap-14 mt-10">
+      <div className="flex flex-col lg:flex-row gap-14 mt-10 px-3 lg:px-0">
         <div className="flex-grow">
           <div className="">
-            <h3 className="text-4xl font-bold mb-5 text-justify">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-5 text-justify">
               11 Tips to Help You Get New Clients Through Cold Calling
             </h3>
             <div className="flex justify-between items-center px-2">
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <img
                   src="https://jobbox-nextjs-v3.vercel.app/assets/imgs/page/homepage1/user3.png"
                   alt=""
@@ -23,7 +23,7 @@ const Blog: React.FC = () => {
                 />
                 <h3 className="text-sm text-gray-500">{"Sarah Harding"}</h3>
               </div>
-              <div className="flex gap-4 items-center">
+              <div className="flex flex-wrap gap-4 items-center">
                 <p className="text-sm text-gray-500">20 April 2022</p>
                 <p className="text-sm text-gray-500"> 8 mins to read</p>
               </div>
@@ -39,7 +39,7 @@ const Blog: React.FC = () => {
           </div>
           <div className="mt-10">
             <img
-              className="object-cover w-full h-[400px]"
+              className="object-cover w-full h-[200px] md:h-[300px] lg:h-[400px]"
               src="https://jobbox-nextjs-v3.vercel.app/assets/imgs/page/blog/img-content.png"
               alt="Example"
             />
@@ -111,9 +111,9 @@ const Blog: React.FC = () => {
               </p>
             </div>
             <hr className="my-10 border-t-2 w-[calc(100%-40px)] mx-auto" />
-            <div className="flex items-center gap-5 text-gray-600">
+            <div className="flex flex-col lg:flex-row items-center gap-5 text-gray-600">
               <h3 className="font-bold">Tags:</h3>
-              <div className="flex items-center gap-5 *:bg-gray-200 *:py-1 *:px-2 *:rounded-lg">
+              <div className="flex flex-wrap items-center gap-5 *:bg-gray-200 *:py-1 *:px-2 *:rounded-lg">
                 <p>#Nature</p>
                 <p>#Beauty</p>
                 <p>#Travel tips</p>

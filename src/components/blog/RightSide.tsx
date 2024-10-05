@@ -5,7 +5,7 @@ import Advertisement from "../../shared/Advertisement";
 
 const RightSide: React.FC = () => {
   return (
-    <div className="min-w-[400px] min-h-[200px]">
+    <div className="w-full max-w-[400px] lg:min-w-[400px] min-h-[200px]">
       <SearchBar />
       <Advertisement />
       <RelatedPost />
