@@ -33,12 +33,12 @@ const BlogCard: React.FC<BlogCardProps> = ({
           className="w-full h-[250px] object-cover rounded-lg"
         />
       </Link>
-      <p className="bg-blue-200 py-1 text-blue-600 text-xs my-5 flex justify-center items-center rounded-md max-w-12">
+      <p className="bg-color-secondaryBlack py-1 text-color-white text-xs my-5 flex justify-center items-center rounded-md max-w-12">
         {category}
       </p>
       <div className="">
         <Link to={link}>
-          <h3 className="text-xl font-bold text-gray-800 hover:text-blue-600 transition-colors leading-[26px]">
+          <h3 className="text-xl font-bold text-color-primaryBlack hover:text-color-primaryBlack/60 transition-colors leading-[26px]">
             {title}
           </h3>
         </Link>
