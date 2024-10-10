@@ -3,9 +3,13 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        'poppins': "'Poppins', sans-serif",
+        'bebas' : "'Bebas Neue', sans-serif"
+      },
       colors: {
         "color-primaryBlack": "#000000",
-        "color-secondaryBlack": "#1C1D1E",
+        "color-secondaryBlack": "#222222",
         "color-white": "#CCCCCC",
         "color-ash": "#111111",
       },

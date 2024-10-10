@@ -3,7 +3,7 @@ import Navbar from "./shared/navbar/Navbar";
 
 const App = () => {
   return (
-    <div>
+    <div className="font-poppins overflow-x-hidden">
       <Navbar/>
       {/* main outlet */}
       <Outlet />

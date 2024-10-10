@@ -20,9 +20,13 @@ const Blogs: React.FC = () => {
   };
   return (
     <Container>
+      <h3 className="font-bebas text-center text-color-secondaryBlack text-3xl md:text-5xl lg:text-7xl font-bold md:my-3">
+          B l o g _ P o s t s
+        </h3>
+        <hr className="pb-10 border-t-2 mx-2" />
       <TopBlogs />
-      <div className="px-3 mt-10">
-        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-1 lg:mb-3">
+      <div className="px-3 mt-20">
+        <h3 className="font-bebas text-color-secondaryBlack text-2xl md:text-4xl lg:text-6xl font-bold mb-1 lg:mb-3">
           Latest Posts
         </h3>
         <p className="text-xs md:text-sm lg:text-lg font-medium text-gray-500">
