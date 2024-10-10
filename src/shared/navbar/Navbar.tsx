@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
 // react icons
-import { FaDiscord } from "react-icons/fa";
+
 import { IoIosArrowDown, IoIosSearch } from "react-icons/io";
-import { TbBrandGithubFilled } from "react-icons/tb";
 import { CiMenuFries } from "react-icons/ci";
 import { MdDashboardCustomize, MdKeyboardArrowDown } from "react-icons/md";
 import { BsArrowRight } from "react-icons/bs";
@@ -21,10 +20,16 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="w-full border-b border-color-seconderyBlack mb-8">
-      <Container className="min-h-16 flex items-center justify-between w-full relative">
-        <Link to={"/"}>
-          <h3 className="font-bold text-2xl">Tech Hub</h3>
-        </Link>
+      <Container className="min-h-16 flex items-center justify-between w-full relative px-4 py-2">
+        <div className="flex items-center gap-4">
+          <CiMenuFries
+            className="text-[1.6rem] text-center cursor-pointer lg:hidden flex"
+            onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
+          />
+          <Link to={"/"}>
+            <h3 className="font-bold text-4xl">Tech Hub</h3>
+          </Link>
+        </div>
         <ul className="items-center gap-[20px] text-[1rem] text-text lg:flex hidden">
           <li className="transition-all duration-500 cursor-pointer hover:text-primary capitalize">
             <Link to={"/"}>home</Link>
@@ -151,20 +156,13 @@ const Navbar: React.FC = () => {
             <IoIosSearch className="absolute top-[9px] left-3 text-text text-[1.3rem]" />
           </div>
 
-          <FaDiscord className="text-[1.6rem] text-textc cursor-pointer hover:text-primary transition-all duration-500 " />
-          <TbBrandGithubFilled className="text-[1.6rem] text-textc cursor-pointer hover:text-primary transition-all duration-500" />
-
-          <CiMenuFries
-            className="text-[1.6rem] text-textc cursor-pointer lg:hidden flex"
-            onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
-          />
-          <div className="flex justify-center items-center gap-2">
-            <Link className="cursor-pointer hover:text-primary" to={"/signin"}>
-              signin
+          <div className="flex justify-center items-center gap-2 text-color-primaryBlack font-semibold">
+            <Link className="cursor-pointer " to={"/signin"}>
+              Log in
             </Link>
             /
-            <Link className="cursor-pointer hover:text-primary" to={"/signup"}>
-              signUp
+            <Link className="cursor-pointer " to={"/signup"}>
+              Sign Up
             </Link>
           </div>
         </div>
@@ -173,10 +171,10 @@ const Navbar: React.FC = () => {
           className={`${
             mobileSidebarOpen
               ? "translate-x-0 opacity-100 z-20"
-              : "translate-x-[200px] opacity-0 z-[-1]"
-          } lg:hidden bg-white boxShadow p-4 text-center absolute top-[55px] right-0 sm:w-[300px] w-full rounded-md transition-all duration-300`}
+              : "-translate-x-[200px] opacity-0 z-[-1]"
+          } lg:hidden bg-white boxShadow p-4 text-center absolute top-[55px] left-0 sm:w-[300px] w-full rounded-md transition-all duration-300`}
         >
-          <ul className="items-start gap-[20px] text-[1rem] text-text flex flex-col">
+          <ul className="items-start gap-[20px] text-[1rem] text-text flex flex-col pr-4">
             <li className="transition-all duration-500 cursor-pointer hover:text-primary capitalize">
               home
             </li>

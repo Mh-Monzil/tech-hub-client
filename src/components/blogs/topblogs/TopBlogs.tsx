@@ -4,8 +4,8 @@ import TopBlogCard from "./TopBlogCard";
 const TopBlogs: React.FC = () => {
   return (
     <div className="px-3">
-      <h3 className="font-bebas text-color-secondaryBlack text-2xl md:text-4xl lg:text-6xl font-bold mb-1 lg:mb-3">
-          Top Posts
+      <h3 className="hidden font-bebas text-color-secondaryBlack text-4xl md:text-5xl lg:text-6xl font-bold mb-1 lg:mb-3">
+          {/* Top Posts */}
         </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full mt-5">
         <TopBlogCard
