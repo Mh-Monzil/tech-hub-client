@@ -1,9 +1,9 @@
 import React from "react";
-import Container from "../../components/Container";
-import RightSide from "../../components/blog/RightSide";
 import { MdShare } from "react-icons/md";
 import { FiBookmark } from "react-icons/fi";
-import CommentsArea from "../../components/blog/CommentsArea";
+import CommentsArea from "../../../components/blogs/blog/CommentsArea";
+import RightSide from "../../../components/blogs/blog/RightSide";
+import Container from "../../../components/Container";
 
 const Blog: React.FC = () => {
   return (

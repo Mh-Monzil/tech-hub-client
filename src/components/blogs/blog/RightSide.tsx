@@ -1,7 +1,7 @@
 import React from "react";
-import SearchBar from "../blogs/SearchBar";
 import RelatedPost from "./RelatedPost";
-import Advertisement from "../../shared/Advertisement";
+import Advertisement from "../../../shared/Advertisement";
+import SearchBar from "../SearchBar";
 
 const RightSide: React.FC = () => {
   return (

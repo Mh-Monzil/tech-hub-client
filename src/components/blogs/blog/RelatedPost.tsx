@@ -1,5 +1,5 @@
 import React from "react";
-import TrendingCard from "../blogs/TrendingCard";
+import TrendingCard from "../TrendingCard";
 
 const RelatedPost: React.FC = () => {
   return (
